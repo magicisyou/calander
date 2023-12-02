@@ -2,6 +2,8 @@
 
 Terminal calander for linux written in rust.
 
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/calander)
+
 This is a command line app which can be used to see the calander within the terminal. It can be used to see the calander of any year between 0 and 4294967295.
 
 ![Calander](/docs/screenshot.webp)
