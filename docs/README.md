@@ -6,8 +6,6 @@ Terminal calander for linux written in rust.
 
 This is a command line app which can be used to see the calander within the terminal. It can be used to see the calander of any year between 0 and 4294967295.
 
-![icon](../snap/icon.png)
-
 ![Calander](/docs/screenshot.webp)
 
 ## Features
