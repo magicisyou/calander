@@ -75,7 +75,7 @@ impl Ui {
                 cursor::MoveTo(position_x(&(week as u16)), position_y(&line)),
             )?;
             if date == self.calander.day {
-                queue!(stdout, Print(date.to_string().green().bold()))?;
+                queue!(stdout, Print(date.to_string().blue().bold()))?;
             } else if week == 0 {
                 queue!(stdout, Print(date.to_string().red()))?;
             } else {
@@ -92,7 +92,7 @@ impl Ui {
                     cursor::MoveTo(position_x(&(week as u16)), position_y(&line)),
                 )?;
                 if date == self.calander.day {
-                    queue!(stdout, Print(date.to_string().green().bold()))?;
+                    queue!(stdout, Print(date.to_string().blue().bold()))?;
                 } else if week == 0 {
                     queue!(stdout, Print(date.to_string().red()))?;
                 } else {

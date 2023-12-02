@@ -2,6 +2,10 @@
 name = "calander"
 version = "0.1.0"
 edition = "2021"
+authors = ["youaremagic"]
+license = "MIT"
+description = "Calander for terminal"
+repository = "https://github.com/youaremagic/calander"
 
 [dependencies]
 chrono = "0.4.24"
