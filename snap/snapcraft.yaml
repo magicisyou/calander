@@ -8,7 +8,6 @@ description: |
 grade: stable
 confinement: strict
 contact: magicisyou@outlook.com
-issues: [https://github.com/youaremagic/calander/issues, magicisyou@outlook.com]
 license: MIT
 source-code: https://github.com/youaremagic/calander
 
