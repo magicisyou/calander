@@ -1,6 +1,6 @@
 [package]
 name = "calander"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["youaremagic"]
 license = "MIT"
@@ -10,3 +10,4 @@ repository = "https://github.com/youaremagic/calander"
 [dependencies]
 chrono = "0.4.24"
 crossterm = "0.26.1"
+clap = { version = "4.0", features = ["derive"] }

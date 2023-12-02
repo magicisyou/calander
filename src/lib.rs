@@ -11,6 +11,11 @@ mod calander;
 
 use crate::calander::Calander;
 
+pub struct Date {
+    pub month: u32,
+    pub year: u32,
+}
+
 const WEEKS: [&str; 7] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const MONTHS: [&str; 12] = [
@@ -28,8 +33,8 @@ const MONTHS: [&str; 12] = [
     "December",
 ];
 
-pub fn run(config: Option<Config>) -> crossterm::Result<()> {
-    let mut ui = Ui::init(config)?;
+pub fn run(date: Option<Date>) -> crossterm::Result<()> {
+    let mut ui = Ui::init(date)?;
     ui.run()?;
     Ok(())
 }
@@ -39,10 +44,10 @@ struct Ui {
 }
 
 impl Ui {
-    fn init(config: Option<Config>) -> crossterm::Result<Self> {
+    fn init(date: Option<Date>) -> crossterm::Result<Self> {
         terminal::enable_raw_mode()?;
         execute!(io::stdout(), terminal::EnterAlternateScreen, cursor::Hide)?;
-        let calander = match config {
+        let calander = match date {
             Some(c) => Calander::from(0, c.month, c.year),
             None => Calander::today(),
         };
@@ -172,36 +177,5 @@ impl Drop for Ui {
         terminal::disable_raw_mode().expect("Failed to disable raw mode");
         execute!(io::stdout(), cursor::Show, terminal::LeaveAlternateScreen,)
             .expect("Failed to execute cleanup commands");
-    }
-}
-
-pub struct Config {
-    month: u32,
-    year: u32,
-}
-
-impl Config {
-    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Option<Self>, &'static str> {
-        args.next();
-        let month = match args.next() {
-            Some(m) => m,
-            None => return Ok(None),
-        };
-        let month = match month.parse::<u32>() {
-            Ok(m) => m,
-            Err(_) => return Err("Month is expected as integer"),
-        };
-        if !(1..=12).contains(&month) {
-            return Err("Month should be in range 1 to 12");
-        }
-        let year = match args.next() {
-            Some(y) => y,
-            None => return Err("Year not entered"),
-        };
-        let year = match year.parse::<u32>() {
-            Ok(y) => y,
-            Err(_) => return Err("Year is expected as positive integer"),
-        };
-        Ok(Some(Self { month, year }))
     }
 }

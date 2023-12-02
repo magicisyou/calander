@@ -1,12 +1,17 @@
 name: calander
 base: core18
-version: '0.1.0'
+version: '0.2.0'
 summary: Calander for terminal
 description: |
   View colorful calander from the terminal.
 
-grade: devel
-confinement: devmode
+grade: stable
+confinement: strict
+contact: magicisyou@outlook.com
+issues: [https://github.com/youaremagic/calander/issues, magicisyou@outlook.com]
+license: MIT
+source-code: https://github.com/youaremagic/calander
+icon : icon.png
 
 parts:
   calander:
