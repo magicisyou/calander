@@ -28,18 +28,8 @@ Month and year can be passed as command line arguements in respective order to s
 
 ## Build on local system
 
-Clone the repository and build the project using cargo
+Build using cargo
 
-Clone the repository
-
-```
-git clone https://github.com/youaremagic/calander
-```
-Change directory
-```
-cd calander
-```
-Build
 ```
 cargo build
 ```

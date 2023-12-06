@@ -33,6 +33,8 @@ const MONTHS: [&str; 12] = [
     "December",
 ];
 
+const STATUS_LINE_CONTROLS: &str = "Quit - q | Today - t | Change month/year - Arrow keys |";
+
 pub fn run(date: Option<Date>) -> crossterm::Result<()> {
     let mut ui = Ui::init(date)?;
     ui.run()?;
@@ -52,6 +54,15 @@ impl Ui {
             None => Calander::today(),
         };
         Ok(Self { calander })
+    }
+
+    fn get_today_as_text(&self) -> String {
+        format!(
+            "{} {} {}",
+            self.calander.today.0,
+            &MONTHS[self.calander.today.1 as usize - 1],
+            self.calander.today.2,
+        )
     }
 
     fn update_screen(&self) -> crossterm::Result<()> {
@@ -97,7 +108,7 @@ impl Ui {
                     cursor::MoveTo(position_x(&(week as u16)), position_y(&line)),
                 )?;
                 if date == self.calander.day {
-                    queue!(stdout, Print(date.to_string().blue().bold()))?;
+                    queue!(stdout, Print(date.to_string().yellow().bold()))?;
                 } else if week == 0 {
                     queue!(stdout, Print(date.to_string().red()))?;
                 } else {
@@ -124,6 +135,20 @@ impl Ui {
                 queue!(stdout, Print(month.dark_grey()))?;
             }
         }
+        queue!(
+            stdout,
+            cursor::MoveTo(
+                (term_size.0
+                    - (STATUS_LINE_CONTROLS.len() + self.get_today_as_text().len()) as u16)
+                    / 2,
+                term_size.1 - 1
+            ),
+            Print(format!(
+                "{} {}",
+                STATUS_LINE_CONTROLS.dark_grey(),
+                self.get_today_as_text().red(),
+            ))
+        )?;
         stdout.flush()?;
         Ok(())
     }

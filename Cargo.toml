@@ -1,11 +1,11 @@
 [package]
 name = "calander"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
-authors = ["youaremagic"]
+authors = ["magicisyou"]
 license = "MIT"
 description = "Calander for terminal"
-repository = "https://github.com/youaremagic/calander"
+repository = "https://github.com/magicisyou/calander"
 
 [dependencies]
 chrono = "0.4.24"

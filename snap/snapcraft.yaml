@@ -1,6 +1,6 @@
 name: calander
 base: core18
-version: '0.2.0'
+version: '0.3.0'
 summary: Calander for terminal
 description: |
   View colorful calander from the terminal.
@@ -9,12 +9,12 @@ grade: stable
 confinement: strict
 contact: magicisyou@outlook.com
 license: MIT
-source-code: https://github.com/youaremagic/calander
+source-code: https://github.com/magicisyou/calander
 
 parts:
   calander:
     plugin: rust
-    source: https://github.com/youaremagic/calander.git
+    source: https://github.com/magicisyou/calander.git
 
 apps:
   calander:
