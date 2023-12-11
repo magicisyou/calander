@@ -1,6 +1,6 @@
 name: calander
 base: core18
-version: '0.3.0'
+version: '0.3.1'
 summary: Calander for terminal
 description: |
   View colorful calander from the terminal.
